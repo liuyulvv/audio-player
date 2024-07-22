@@ -1,43 +1,32 @@
 {
+    "productName": "audio-player",
+    "version": "0.0.0",
+    "identifier": "com.liuyulvv.audio-player",
     "build": {
         "beforeDevCommand": "pnpm dev",
+        "devUrl": "http://localhost:1420",
         "beforeBuildCommand": "pnpm build",
-        "devPath": "http://localhost:1420",
-        "distDir": "../dist"
+        "frontendDist": "../dist"
     },
-    "package": {
-        "productName": "audio-player",
-        "version": "0.0.0"
-    },
-    "tauri": {
-        "allowlist": {
-            "all": false,
-            "shell": {
-                "all": false,
-                "open": true
-            }
-        },
+    "app": {
         "windows": [
             {
-                "title": "audio-player",
+                "title": "AudioPlayer",
                 "width": 800,
                 "height": 600
             }
         ],
         "security": {
-            "csp": null
-        },
-        "bundle": {
-            "active": true,
-            "targets": "all",
-            "identifier": "com.liuyulvv.audio-player",
-            "icon": [
-                "icons/32x32.png",
-                "icons/128x128.png",
-                "icons/128x128@2x.png",
-                "icons/icon.icns",
-                "icons/icon.ico"
-            ]
+            "csp": "default-src 'self' ipc: http://ipc.localhost; img-src 'self' asset: http://asset.localhost",
+            "assetProtocol": {
+                "enable": true,
+                "scope": ["**"]
+            }
         }
+    },
+    "bundle": {
+        "active": true,
+        "targets": "all",
+        "icon": ["icons/32x32.png", "icons/128x128.png", "icons/128x128@2x.png", "icons/icon.icns", "icons/icon.ico"]
     }
 }
